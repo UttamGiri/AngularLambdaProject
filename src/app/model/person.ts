@@ -1,6 +1,6 @@
 import { Identifiers } from "@angular/compiler";
 
-interface Person{
+export interface Person{
       integer: Number;
       name: String;
       address: String;
