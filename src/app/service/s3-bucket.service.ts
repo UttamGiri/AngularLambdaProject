@@ -16,20 +16,23 @@ export class S3BucketService {
     //   Http Interceptor yet to be implemented
 
     const headerDict = {
-      //'Content-Type': 'application/json',
+      'Content-Type': 'application/json',
       //'Accept': 'application/json',
      // 'Access-Control-Allow-Headers': 'Content-Type',
-      'Authorizer': accessToken,
+      'Authorization': accessToken,
       // Required for CORS support to work
-      //"Access-Control-Allow-Origin" : "*"
+     // "Access-Control-Allow-Origin" : "*"
  
     }
     
     const requestOptions = {                                                                                                                                                                                 
       headers: new HttpHeaders(headerDict), 
     };
+    
+    let url: string = environment.S3ClientURL+"?id=101";
+    console.log("get url called >>>>" + url);
 
-    return this.http.get<any>(environment.S3ClientURL, requestOptions);
+    return this.http.get<any>(url, requestOptions);
   }
 
   

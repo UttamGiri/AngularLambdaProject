@@ -33,7 +33,7 @@ export class DashboardComponent implements OnInit {
      this.s3BucketService.getFromS3Bucket().subscribe(
        res => {
          console.log(res); 
-         this.s3ClientText = res; 
+         this.s3ClientText = res.name; 
       }, 
       err => {
         console.log(err) 
