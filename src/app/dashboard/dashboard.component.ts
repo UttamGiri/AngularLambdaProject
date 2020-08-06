@@ -38,6 +38,7 @@ export class DashboardComponent implements OnInit {
       }, 
       err => {
         console.log(err) 
+        this.s3ClientText = "";
       }
      );
    
@@ -61,7 +62,8 @@ export class DashboardComponent implements OnInit {
          this.dynamoClientText = res.name; 
       }, 
       err => {
-        console.log(err) 
+        console.log(err) ;
+        this.dynamoClientText = "";
       }
      );
   }
