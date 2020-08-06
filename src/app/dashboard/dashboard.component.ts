@@ -14,6 +14,7 @@ export class DashboardComponent implements OnInit {
   token: any;
 
   s3ClientText: string;
+  dynamoClientText: string;
 
   constructor(private awsCognitoService: AwsCognitoService, private s3BucketService: S3BucketService) { }
 
@@ -40,11 +41,35 @@ export class DashboardComponent implements OnInit {
       }
      );
    
+     this.getFromDynamoDB();
+  }
 
+  getFromDynamoDB(){
+    this.token = localStorage.getItem('access-token');
+
+    if (this.token) {
+      const base64Url = this.token.split('.')[1];
+      const base64 = base64Url.replace('-', '+').replace('_', '/');
+      this.tokenDetails = JSON.parse(atob(base64));
+
+      console.log("Access Token Details >>>" + JSON.stringify(this.tokenDetails));
+    }
+
+     this.s3BucketService.getFromDynamoDB().subscribe(
+       res => {
+         console.log(res); 
+         this.dynamoClientText = res.name; 
+      }, 
+      err => {
+        console.log(err) 
+      }
+     );
   }
 
   logout(): void {
     window.location.assign(environment.logout);
+    localStorage.clear();
+
   }
 
 }

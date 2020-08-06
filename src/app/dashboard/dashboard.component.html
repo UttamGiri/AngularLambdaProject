@@ -1,7 +1,101 @@
-<div>
-  <h1>I am in dashboard</h1>
-    Text From S3 Bucket :{{s3ClientText}}
-  <div style="margin: 5em 5em;">
-    <button (click)="logout()">Logout</button>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    ol li.skip {
+      list-style-type: none;
+      counter-increment: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <h1>This page is at initial phase.</h1>
+    <h4>Info</h4>
+
+    <h4>Security</h4>
+
+    Cognito . Https SSL certificate implemented
+
+    <h4>S3 bucket Data</h4>
+
+    Data pulled from S3 buckert from json file.
+    post put delete has been implemented and pushed to AWS . but not yet impelemented in UI <div class="">
+      Please check Lambda git hub link
+    </div>
+
+    <h4>Database</h4>
+    Dynamo DB
+
+    services are ready . not yet implemted to ui . but available on cloud
+    Please check Lambda git hub link
+
+    <h4>Elastic Search implemented</h4>
+    <a
+      href="https://search-uttams-elastic-search-b44inickf22unbupzhjqaf5juy.us-east-1.es.amazonaws.com/_plugin/kibana/app/kibana#/discover?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(columns:!(_source),filters:!(),index:'5cd49290-d526-11ea-a3a4-9540a7976d1d',interval:auto,query:(language:kuery,query:BIOGRAPHY_LAMBDA),sort:!()) ">Ekastic
+      search URL link </a>
+    Here in search
+    As many time you log in there will be 101 id displayed which is hard coded called from Angular.
+    i logged t using cloud watch and streamed to elastic search and is displayed by kibana
+
+    <h4>Github link for Angular</h4>
+    https://github.com/UttamGiri/AngularLambdaProject
+    <h4>Github link for Lambda</h4>
+    https://github.com/UttamGiri/BiographyAWS
+
+    <h4> Text From S3 Bucket </h4>
+    <h1> {{s3ClientText}}</h1>
+    this value is fetched from lambda from s3 bucket . here there is a json response of person object returned . if you
+    right click
+    you should be able to see.
+
+    <h4> Text From DynamoDB </h4>
+    <h1> {{dynamoClientText}}</h1>
+
+    <h4> QUESTION AND ANSWER</h4>
+
+    <ol>
+      <li> API Gateway and DynamoDB. Nirav found that candidates have used AWS before but for different use cases –
+        DevOps (deploying services on AWS),
+        classic development (S3, EC2, SNS, SQS etc.), whereas, we are looking for experience with other set of AWS
+        services?
+      </li>
+      <li class="skip" style="margin-top:5px;margin-bottom:10px;"><b>Answer:</b> I have experience of working on
+        monolothic project In fact this angular app is deployed on AWS s3 bucket.
+        I have built microservices projet using sprint boot deployed in EC2 intance also. This backend project is built
+        on Serverless architecture using java. AWS LAMBDA, COGNITO, DYNAMO DB, ELASTIC SEARCH SERVICE.
+        All are server less no need for maintaining clusters , all manged by AWS Guys. </li>
+      <li class="skip">Microservices project can be found in
+        https://github.com/UttamGiri/microservice-aws-link/blob/master/readme-prod-run.txt
+        Username password for Eureka is uttam/uttam
+
+      </li>
+
+      <li value="2" style="margin-top:10px"> Exact details of what he/she has developed with AWS (ideally in a 100%
+        serverless cloud AWS environment) ?
+      </li>
+      <li class="skip" style="margin-top:5px;margin-bottom:10px;"><b>Answer:</b> Speaking truth, till now i haven't got
+        a chance to work 100% serverless,
+        that is why i built this project to prove that i have a knowledge of it.
+      </li>
+
+      <li value="3" style="margin-top:10px"> Please ask if they have used API Gateway, Lambda and Dynamo DB to deploy AWS lambda Code.
+      </li>
+      <li class="skip" style="margin-top:5px;margin-bottom:10px;"><b>Answer:</b> Yes, Please
+      </li>
+
+
+    </ol>
+
+
+
+    <div style="margin: 5em 5em;">
+      <button (click)="logout()">Logout</button>
+    </div>
   </div>
-</div>
+
+</body>
+
+</html>
