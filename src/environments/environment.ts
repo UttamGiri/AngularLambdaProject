@@ -15,6 +15,7 @@ export const environment = {
           'logout_uri=http://localhost:4200/home',
 
           S3ClientURL: 'https://twfmwqt9t2.execute-api.us-east-1.amazonaws.com/dev',
+  dynamoDBFindURL: 'https://gcwivq0eja.execute-api.us-east-1.amazonaws.com/dev/find',
 };
 
 
