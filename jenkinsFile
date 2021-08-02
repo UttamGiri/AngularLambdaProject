@@ -36,7 +36,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-               // sh "aws configure set region ${AWS_REGION}"
+               sh "aws configure set region ${AWS_REGION}"
                 sh "aws s3 cp ${DIST_ARCHIVE}.zip s3://${S3_BUCKET}/${DIST_ARCHIVE}.zip"
                 sh "aws --region ${AWS_REGION} deploy create-deployment --application-name AngularLambda --deployment-config-name CodeDeployDefault.AllAtOnce --deployment-group-name angular-deployment-group --s3-location 'bucket=${S3_BUCKET},bundleType=zip,key=${DIST_ARCHIVE}.zip'"
             }
