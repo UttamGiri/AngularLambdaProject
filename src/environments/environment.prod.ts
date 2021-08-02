@@ -5,7 +5,7 @@ export const environment = {
   client_secret: '**********',
         loginURL: 'https://uttam-api-auth.auth.us-east-1.amazoncognito.com/login?client_id=46s1mf6dm8t88jmfos42ed7noa&response_type=code&scope=openid+profile&redirect_uri=http://localhost:4200/callback',
       
-        redirectURL: 'http://localhost:4200/callback',
+         redirectURL: 'https://www.dhodekhali.com/callback',
       
         cognitoTokenURL: 'https://uttam-api-auth.auth.us-east-1.amazoncognito.com/oauth2/token',
       
