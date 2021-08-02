@@ -4,7 +4,7 @@ def S3_BUCKET = 'www.dhodekhali.com'
 
 pipeline {
     agent any
-    tools { nodejs '14.15.4' }
+    tools { nodejs "nodejs" }
 
     stages {
         stage('NPM Install') {
