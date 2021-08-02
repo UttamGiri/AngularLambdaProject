@@ -15,5 +15,7 @@ export const environment = {
           'logout_uri=https://www.dhodekhali.com/home',
 
           S3ClientURL: 'https://9gjkvybxkk.execute-api.us-east-1.amazonaws.com/dev/find',
-          dynamoDBFindURL: 'https://gcwivq0eja.execute-api.us-east-1.amazonaws.com/dev/find'
+          dynamoDBFindURL: 'https://gcwivq0eja.execute-api.us-east-1.amazonaws.com/dev/find',
+
+          BUILD_NUMBER : 1.1
 };
