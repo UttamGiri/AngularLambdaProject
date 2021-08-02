@@ -9,7 +9,7 @@ pipeline {
     stages {
          stage('SCM') {
             steps {
-              checkout scm
+              git credentialsId: '49a873e1-b349-44c0-9c74-080b6563ea74', url: 'https://github.com/UttamGiri/AngularLambdaProject'
             }
         }
         stage('NPM Install') {
