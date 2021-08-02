@@ -25,20 +25,22 @@ pipeline {
         // }
         stage('Build') {
             steps {
-                sh 'npm run build'
+                sh 'npm run build --prod'
             }
         }
-        stage('Archive') {
-            steps {
-              sh "cd dist && zip -r ../${DIST_ARCHIVE}.zip . && cd .."
-              archiveArtifacts artifacts: "${DIST_ARCHIVE}.zip", fingerprint: true
-            }
-        }
+        // stage('Archive') {
+        //     steps {
+        //       sh "cd dist && zip -r ../${DIST_ARCHIVE}.zip . && cd .."
+        //       archiveArtifacts artifacts: "${DIST_ARCHIVE}.zip", fingerprint: true
+        //     }
+        // }
         stage('Deploy') {
             steps {
-               sh "aws configure set region ${AWS_REGION}"
-                sh "aws s3 cp ${DIST_ARCHIVE}.zip s3://${S3_BUCKET}/${DIST_ARCHIVE}.zip"
-                sh "aws --region ${AWS_REGION} deploy create-deployment --application-name AngularLambda --deployment-config-name CodeDeployDefault.AllAtOnce --deployment-group-name angular-deployment-group --s3-location 'bucket=${S3_BUCKET},bundleType=zip,key=${DIST_ARCHIVE}.zip'"
+                s3Upload consoleLogLevel: 'INFO', dontSetBuildResultOnFailure: false, dontWaitForConcurrentBuildCompletion: false, entries: [[bucket: 'www.dhodekhali.com', excludedFile: '', flatten: true, gzipFiles: false, keepForever: false, managedArtifacts: false, noUploadOnFailure: false, selectedRegion: 'us-east-1', showDirectlyInBrowser: false, sourceFile: '**/dist/demo-sso/*', storageClass: 'STANDARD', uploadFromSlave: false, useServerSideEncryption: false]], pluginFailureResultConstraint: 'FAILURE', profileName: 'S3-Profile', userMetadata: []
+               // sh "aws configure set region ${AWS_REGION}"
+              //  sh "aws s3 cp ${DIST_ARCHIVE}.zip s3://${S3_BUCKET}/${DIST_ARCHIVE}.zip"
+                //https://console.aws.amazon.com/codesuite/codedeploy/applications?region=us-east-1  we dont need this for now only cluster
+               // sh "aws --region ${AWS_REGION} deploy create-deployment --application-name AngularLambda --deployment-config-name CodeDeployDefault.AllAtOnce --deployment-group-name angular-deployment-group --s3-location 'bucket=${S3_BUCKET},bundleType=zip,key=${DIST_ARCHIVE}.zip'"
             }
         }
     }
