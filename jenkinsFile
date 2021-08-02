@@ -14,9 +14,6 @@ pipeline {
         }
         stage('NPM Install') {
             steps {
-                script {
-                    notifyBitbucket(buildStatus: 'INPROGRESS')
-                }
                 sh 'npm install --verbose -d'
             }
         }
@@ -48,7 +45,6 @@ pipeline {
         always {
             script {
                 currentBuild.result = currentBuild.result ?: 'SUCCESS'
-                notifyBitbucket()
 
                 if (currentBuild.result == 'SUCCESS') {
                   echo 'notify slack'
