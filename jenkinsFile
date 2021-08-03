@@ -25,7 +25,7 @@ pipeline {
         // }
         stage('Build') {
             steps {
-                sh 'npm run  build --prod --aot --output-hashing=all'
+                sh 'npm run ng -- build --prod'
             }
         }
         // stage('Archive') {
